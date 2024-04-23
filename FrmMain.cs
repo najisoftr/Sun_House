@@ -16,5 +16,12 @@ namespace Sun_House
         {
             InitializeComponent();
         }
+
+        private void FrmMain_Load(object sender, EventArgs e)
+        {
+            //check if the database exist, or else create it
+            if (!myProcs.CheckDb())
+                Application.Exit();
+        }
     }
 }

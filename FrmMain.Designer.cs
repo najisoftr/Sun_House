@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            AntdUI.MenuItem menuItem4 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem1 = new AntdUI.MenuItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.MenuLeft = new AntdUI.Menu();
             this.MenuHorizontal = new AntdUI.Segmented();
@@ -41,13 +41,13 @@
             // 
             this.MenuLeft.BackColor = System.Drawing.Color.Gold;
             this.MenuLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            menuItem4.Icon = ((System.Drawing.Image)(resources.GetObject("menuItem4.Icon")));
-            menuItem4.Text = "My House";
+            menuItem1.Icon = ((System.Drawing.Image)(resources.GetObject("menuItem1.Icon")));
+            menuItem1.Text = "My House";
             this.MenuLeft.Items.AddRange(new AntdUI.MenuItem[] {
-            menuItem4});
-            this.MenuLeft.Location = new System.Drawing.Point(0, 136);
+            menuItem1});
+            this.MenuLeft.Location = new System.Drawing.Point(0, 102);
             this.MenuLeft.Name = "MenuLeft";
-            this.MenuLeft.Size = new System.Drawing.Size(235, 612);
+            this.MenuLeft.Size = new System.Drawing.Size(223, 646);
             this.MenuLeft.TabIndex = 0;
             this.MenuLeft.Text = "menu1";
             // 
@@ -57,7 +57,7 @@
             this.MenuHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
             this.MenuHorizontal.Location = new System.Drawing.Point(0, 0);
             this.MenuHorizontal.Name = "MenuHorizontal";
-            this.MenuHorizontal.Size = new System.Drawing.Size(1082, 136);
+            this.MenuHorizontal.Size = new System.Drawing.Size(1082, 102);
             this.MenuHorizontal.TabIndex = 1;
             this.MenuHorizontal.Text = "segmented1";
             // 
@@ -68,9 +68,9 @@
             this.PanelMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelMain.Controls.Add(this.tag1);
             this.PanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelMain.Location = new System.Drawing.Point(235, 136);
+            this.PanelMain.Location = new System.Drawing.Point(223, 102);
             this.PanelMain.Name = "PanelMain";
-            this.PanelMain.Size = new System.Drawing.Size(847, 612);
+            this.PanelMain.Size = new System.Drawing.Size(859, 646);
             this.PanelMain.TabIndex = 2;
             // 
             // tag1
@@ -81,7 +81,7 @@
             this.tag1.Margin = new System.Windows.Forms.Padding(10);
             this.tag1.Name = "tag1";
             this.tag1.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
-            this.tag1.Size = new System.Drawing.Size(845, 52);
+            this.tag1.Size = new System.Drawing.Size(857, 52);
             this.tag1.TabIndex = 0;
             this.tag1.Text = "Key Solutions Sun House";
             this.tag1.Type = AntdUI.TTypeMini.Primary;
@@ -100,6 +100,7 @@
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Key Solutions Sun House";
+            this.Load += new System.EventHandler(this.FrmMain_Load);
             this.PanelMain.ResumeLayout(false);
             this.ResumeLayout(false);
 
