@@ -30,6 +30,7 @@
         {
             AntdUI.MenuItem menuItem1 = new AntdUI.MenuItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
+            AntdUI.MenuItem menuItem2 = new AntdUI.MenuItem();
             this.MenuLeft = new AntdUI.Menu();
             this.MenuHorizontal = new AntdUI.Segmented();
             this.PanelMain = new System.Windows.Forms.Panel();
@@ -42,14 +43,19 @@
             this.MenuLeft.BackColor = System.Drawing.Color.Gold;
             this.MenuLeft.Dock = System.Windows.Forms.DockStyle.Left;
             menuItem1.Icon = ((System.Drawing.Image)(resources.GetObject("menuItem1.Icon")));
-            menuItem1.Text = "My House";
+            menuItem1.IconSvg = "0";
+            menuItem1.Text = "My Houses";
+            menuItem2.IconSvg = "1";
+            menuItem2.Text = "second item";
             this.MenuLeft.Items.AddRange(new AntdUI.MenuItem[] {
-            menuItem1});
+            menuItem1,
+            menuItem2});
             this.MenuLeft.Location = new System.Drawing.Point(0, 102);
             this.MenuLeft.Name = "MenuLeft";
             this.MenuLeft.Size = new System.Drawing.Size(223, 646);
             this.MenuLeft.TabIndex = 0;
             this.MenuLeft.Text = "menu1";
+            this.MenuLeft.SelectChanged += new AntdUI.Menu.SelectEventHandler(this.MenuLeft_SelectChanged);
             // 
             // MenuHorizontal
             // 

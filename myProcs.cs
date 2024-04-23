@@ -47,7 +47,9 @@ CREATE TABLE IF NOT EXISTS houses (
     houseId  INTEGER    PRIMARY KEY AUTOINCREMENT,
     desHouse TEXT (256) UNIQUE,
     xPos     TEXT,
-    yPos     TEXT
+    yPos     TEXT,
+    panelAngle INTEGER,
+    houseAngle INTEGER
 );";
                 try
                 {

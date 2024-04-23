@@ -23,5 +23,14 @@ namespace Sun_House
             if (!myProcs.CheckDb())
                 Application.Exit();
         }
+
+        private void MenuLeft_SelectChanged(object sender, AntdUI.MenuItem item)
+        {
+            if(item.IconSvg=="0")
+            {
+                FrmHouses f2 = new FrmHouses();
+                f2.ShowDialog();
+            }
+        }
     }
 }
