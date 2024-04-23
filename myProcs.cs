@@ -49,7 +49,8 @@ CREATE TABLE IF NOT EXISTS houses (
     xPos     TEXT,
     yPos     TEXT,
     panelAngle INTEGER,
-    houseAngle INTEGER
+    houseAngle INTEGER,
+    houseAdress TEXT
 );";
                 try
                 {

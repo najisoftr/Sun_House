@@ -474,4 +474,24 @@
         AfANAAP/AeMB/wH+AwABfwHwDQAG/wMAAX8B8A0ACw==
 </value>
   </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnAddNewHouse.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAAOsAAADrASts18IAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAAC4klEQVRYR2MAAQ4u3sMsrOw/WNk4vsMwEzPLbzZ29r9c3Dy/cWFWNra/LKys/zg4uf5iw+wcnP+Y
+        mZn/M7Ow/mJl5/rFxSf6GmidJNhSJMDBxsH9tXHto/9N6x7DsWNo7v/69q7/N5+/wYmLq2r/61va/Y/M
+        KQPjsIzC/8Gpef/DMovA/KC0vP/y6lr/Qwon/69e+ei/XkD5fx5h6T1Qe+GAk52L7wuy5eQ4wCsq6T8w
+        VP6LSUj+5+Hj/x+UkoviAJCZ6bNv/ReQUv8NtNMZYjUEUMUBDn6h/22dXP/vOXX1v4a2HtBByWAHqOga
+        /o+pWQg2swEYyi6Fy/9z8om8BdrLDrGexg7wik1DMbd4yYP/ihZB/zj5hduh9lPPAaaWNv8Xr9/5X1lV
+        A+4AXaB8WudmFLPDuk79Z+fi/wG0m5lqDghIzPovo6j8X1pe8b+yhjY4IaKnARhOmnnnPweP4C+Q3Tgd
+        4JfR/t/O2e3/mu27/6/buRcrzi0pA1vqFhr73z0sDgPb+gT/5xcS+Z/Sth7FbKIcUL/q3n+H4Kz/msa2
+        eLGGoTUwoZliYh2T/4pahv89EqpQzAVhohxASzzqgFEHjDpgcDsgOK/vPzcvP7hKpSYWFBb9n9q+gbAD
+        VPXM/6/dsQdr2U8uvvbk1f/KRmDR7pdI2AHK2sb/tx06BtZ48f6T/6dv3KEIX3n07P/1p6/+N3ZN/G/j
+        HUvYAWrAENh19BTYAVZ29v9l5eUpwrHJqaQ5oH/9pf83nr1GCUJKMUkOSKuZ+v/C3UdgjQtWrfs/cdZc
+        ijCo2ibJAchpILuo9H94TBxFuLmnn3wHUAuT7YDM/CKsviIFN3b1ku+AxWs3Yo1XUvD63fuHcBRY2tph
+        zduk4JikFPIdQI2S8Oqj5wQdgNI5pUcUJM649Z+dmx/UR+QAOYCBg5v/IKx7zsjEBOpa/0HvilOI/3AA
+        u+rALv8fkB0s7Fy/uYUkTjEwMDAAAIaFukxdWBv2AAAAAElFTkSuQmCC
+</value>
+  </data>
 </root>
