@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Sun_House
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : AntdUI.BaseForm
     {
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
         }

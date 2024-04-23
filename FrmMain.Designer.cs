@@ -1,6 +1,6 @@
 ﻿namespace Sun_House
 {
-    partial class Form1
+    partial class FrmMain
     {
         /// <summary>
         /// Required designer variable.
@@ -28,13 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.SuspendLayout();
+            // 
+            // FrmMain
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1022, 650);
+            this.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name = "FrmMain";
+            this.Text = "FrmMain";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
     }
 }
-
