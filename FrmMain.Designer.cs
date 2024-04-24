@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            AntdUI.MenuItem menuItem1 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem5 = new AntdUI.MenuItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            AntdUI.MenuItem menuItem2 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem6 = new AntdUI.MenuItem();
             this.MenuLeft = new AntdUI.Menu();
             this.MenuHorizontal = new AntdUI.Segmented();
             this.PanelMain = new System.Windows.Forms.Panel();
@@ -42,14 +42,14 @@
             // 
             this.MenuLeft.BackColor = System.Drawing.Color.Gold;
             this.MenuLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            menuItem1.Icon = ((System.Drawing.Image)(resources.GetObject("menuItem1.Icon")));
-            menuItem1.IconSvg = "0";
-            menuItem1.Text = "My Houses";
-            menuItem2.IconSvg = "1";
-            menuItem2.Text = "second item";
+            menuItem5.Icon = ((System.Drawing.Image)(resources.GetObject("menuItem5.Icon")));
+            menuItem5.IconSvg = "0";
+            menuItem5.Text = "My Houses";
+            menuItem6.IconSvg = "1";
+            menuItem6.Text = "second item";
             this.MenuLeft.Items.AddRange(new AntdUI.MenuItem[] {
-            menuItem1,
-            menuItem2});
+            menuItem5,
+            menuItem6});
             this.MenuLeft.Location = new System.Drawing.Point(0, 90);
             this.MenuLeft.Name = "MenuLeft";
             this.MenuLeft.Size = new System.Drawing.Size(225, 658);
@@ -81,13 +81,14 @@
             // 
             // tag1
             // 
+            this.tag1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tag1.Badge = "Community Edition";
-            this.tag1.Dock = System.Windows.Forms.DockStyle.Top;
             this.tag1.Location = new System.Drawing.Point(0, 0);
             this.tag1.Margin = new System.Windows.Forms.Padding(10);
             this.tag1.Name = "tag1";
             this.tag1.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
-            this.tag1.Size = new System.Drawing.Size(855, 52);
+            this.tag1.Size = new System.Drawing.Size(856, 52);
             this.tag1.TabIndex = 0;
             this.tag1.Text = "Key Solutions Sun House";
             this.tag1.Type = AntdUI.TTypeMini.Primary;

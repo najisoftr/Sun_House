@@ -70,5 +70,33 @@ CREATE TABLE IF NOT EXISTS houses (
             return ok;
 
         }
+
+        //open a window in the main panel
+        public static void openWindow(System.Windows.Forms.Panel pnl, BaseForm frm)
+        {
+            //close all forms
+            int x = 0;
+            foreach (BaseForm form in pnl.Controls.OfType<BaseForm>().ToArray())
+            {
+                if (form.Name != frm.Name)
+                    form.Close();
+                else
+                    x = x + 1;
+            }
+
+
+            //*******************************
+            if (x < 1)
+            {
+                frm.TopLevel = false;
+                pnl.Controls.Add(frm);
+                frm.Dock = DockStyle.Fill;
+                frm.BringToFront();
+                frm.Show();
+                
+                
+            }
+        }
+
     }
 }

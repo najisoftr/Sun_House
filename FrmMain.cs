@@ -29,7 +29,7 @@ namespace Sun_House
             if(item.IconSvg=="0")
             {
                 FrmHouses f2 = new FrmHouses();
-                f2.ShowDialog();
+                myProcs.openWindow(PanelMain, f2);
             }
         }
     }
