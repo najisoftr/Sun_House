@@ -71,12 +71,14 @@
             this.gMapEditHouseLocation = new GMap.NET.WindowsForms.GMapControl();
             this.tag4 = new AntdUI.Tag();
             this.btnSave = new AntdUI.Button();
+            this.bsHouses = new System.Windows.Forms.BindingSource(this.components);
             this.TabMainHouse.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errProv)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bsHouses)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -371,7 +373,7 @@
             this.txtPanelAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtPanelAngle.Location = new System.Drawing.Point(185, 375);
             this.txtPanelAngle.Name = "txtPanelAngle";
-            this.txtPanelAngle.Size = new System.Drawing.Size(246, 41);
+            this.txtPanelAngle.Size = new System.Drawing.Size(231, 41);
             this.txtPanelAngle.TabIndex = 23;
             this.txtPanelAngle.Text = "0";
             // 
@@ -380,7 +382,7 @@
             this.txtRotAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtRotAngle.Location = new System.Drawing.Point(185, 317);
             this.txtRotAngle.Name = "txtRotAngle";
-            this.txtRotAngle.Size = new System.Drawing.Size(246, 41);
+            this.txtRotAngle.Size = new System.Drawing.Size(231, 41);
             this.txtRotAngle.TabIndex = 22;
             this.txtRotAngle.Text = "0";
             // 
@@ -389,7 +391,7 @@
             this.txtPosY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtPosY.Location = new System.Drawing.Point(185, 259);
             this.txtPosY.Name = "txtPosY";
-            this.txtPosY.Size = new System.Drawing.Size(246, 41);
+            this.txtPosY.Size = new System.Drawing.Size(231, 41);
             this.txtPosY.TabIndex = 21;
             this.txtPosY.Text = "0";
             // 
@@ -398,7 +400,7 @@
             this.txtPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtPosX.Location = new System.Drawing.Point(185, 201);
             this.txtPosX.Name = "txtPosX";
-            this.txtPosX.Size = new System.Drawing.Size(246, 41);
+            this.txtPosX.Size = new System.Drawing.Size(231, 41);
             this.txtPosX.TabIndex = 20;
             this.txtPosX.Text = "0";
             // 
@@ -475,6 +477,7 @@
             this.cmbHouse.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbHouse.BackColor = System.Drawing.Color.LightCyan;
+            this.cmbHouse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHouse.FormattingEnabled = true;
             this.cmbHouse.Location = new System.Drawing.Point(185, 95);
             this.cmbHouse.Name = "cmbHouse";
@@ -498,9 +501,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.gMapEditHouseLocation);
             this.panel2.Controls.Add(this.tag4);
-            this.panel2.Location = new System.Drawing.Point(437, 190);
+            this.panel2.Location = new System.Drawing.Point(443, 190);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(376, 293);
+            this.panel2.Size = new System.Drawing.Size(370, 293);
             this.panel2.TabIndex = 27;
             // 
             // gMapEditHouseLocation
@@ -526,7 +529,7 @@
             this.gMapEditHouseLocation.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapEditHouseLocation.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapEditHouseLocation.ShowTileGridLines = false;
-            this.gMapEditHouseLocation.Size = new System.Drawing.Size(376, 252);
+            this.gMapEditHouseLocation.Size = new System.Drawing.Size(370, 252);
             this.gMapEditHouseLocation.TabIndex = 18;
             this.gMapEditHouseLocation.Zoom = 0D;
             // 
@@ -537,7 +540,7 @@
             this.tag4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tag4.Location = new System.Drawing.Point(0, 0);
             this.tag4.Name = "tag4";
-            this.tag4.Size = new System.Drawing.Size(376, 41);
+            this.tag4.Size = new System.Drawing.Size(370, 41);
             this.tag4.TabIndex = 19;
             this.tag4.Text = "You can manually enter house values \r\nor choose location from the map ";
             this.tag4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -576,6 +579,7 @@
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errProv)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.bsHouses)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -622,5 +626,6 @@
         private GMap.NET.WindowsForms.GMapControl gMapEditHouseLocation;
         private AntdUI.Tag tag4;
         private AntdUI.Button btnSave;
+        private System.Windows.Forms.BindingSource bsHouses;
     }
 }

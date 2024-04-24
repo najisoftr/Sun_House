@@ -14,21 +14,47 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static GMap.NET.Entity.OpenStreetMapGraphHopperGeocodeEntity;
+using static GMap.NET.Entity.OpenStreetMapRouteEntity;
 
 namespace Sun_House
 {
     public partial class FrmHouses : AntdUI.BaseForm
     {
+        //fill the cmbHouses 
+        private DataTable DsHouses()
+        {
+            SQLiteCommand cmd = new SQLiteCommand();
+            cmd.Connection = myProcs.cn;
+            cmd.CommandText = "select * from houses order by desHouse";
+            DataTable dt = new DataTable();
+            SQLiteDataAdapter adapt = new SQLiteDataAdapter(cmd);
+            dt.Clear();
+            try
+            {
+                adapt.Fill(dt);
+                cmd.Dispose();
+                adapt.Dispose();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("can't read houses table\n" + ex.Message, "DataBase error");
+                cmd.Dispose();
+                adapt.Dispose();
+                dt.Dispose();
+                this.Close();
+            }
+            return dt;
+        }
         //initialise the map
-        private void InitiatMap()
+        private void InitiatMap(GMapControl myMap)
         {
             //initialise the gmap control
-            GmapHousePosition.MapProvider = GMapProviders.GoogleHybridMap;
-            GmapHousePosition.ShowCenter = false;
-            GmapHousePosition.MinZoom = 1;
-            GmapHousePosition.MaxZoom = 40;
-            GmapHousePosition.Zoom = 5;
-            GmapHousePosition.DragButton = MouseButtons.Left;
+            myMap.MapProvider = GMapProviders.GoogleHybridMap;
+            myMap.ShowCenter = false;
+            myMap.MinZoom = 1;
+            myMap.MaxZoom = 40;
+            myMap.Zoom = 5;
+            myMap.DragButton = MouseButtons.Left;
         }
 
         public FrmHouses()
@@ -38,13 +64,83 @@ namespace Sun_House
 
         private void FrmHouses_Load(object sender, EventArgs e)
         {
-            InitiatMap();
+            //initiate the maps
+            InitiatMap(GmapHousePosition);
+            InitiatMap(gMapEditHouseLocation);
+            //fill the combo of houses
+            cmbHouse.DataSource = null;
+            bsHouses.DataSource = null;
+            bsHouses.DataSource = DsHouses();
+            cmbHouse.DataSource = bsHouses;
+            cmbHouse.DisplayMember = "desHouse";
+            cmbHouse.ValueMember = "houseId";
+            //event for changing current of the binding source of the combo of houses
+            bsHouses.CurrentChanged += BsHouses_CurrentChanged;
+            BsHouses_CurrentChanged(null, null);
+            gMapEditHouseLocation.Zoom = 15;
+        }
+
+
+
+        private void BsHouses_CurrentChanged(object sender, EventArgs e)
+        {
+            //if the combo is empty clear all fields and reset the map
+            if(bsHouses.Current==null)
+            {
+                clearFields();
+                gMapEditHouseLocation.Overlays.Clear();
+                InitiatMap(gMapEditHouseLocation);
+                return;
+            }
+
+            //display house data from binding source
+            txtDesHouse.Text = ((DataRowView)bsHouses.Current)["desHouse"].ToString();
+            txtAddress.Text= ((DataRowView)bsHouses.Current)["houseAdress"].ToString();
+            txtPanelAngle.Text= ((DataRowView)bsHouses.Current)["panelAngle"].ToString();
+            txtPosX.Text= ((DataRowView)bsHouses.Current)["xPos"].ToString();
+            txtPosY.Text= ((DataRowView)bsHouses.Current)["yPos"].ToString();
+            txtRotAngle.Text= ((DataRowView)bsHouses.Current)["houseAngle"].ToString();
+            //show location in the mapEdit
+            //get the decimal separator to convert decimal to double
+            var decSep = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator;
+            string posY = null, posX = null;
+            posX = txtPosX.Text.Replace(",", decSep);
+            posX = txtPosX.Text.Replace(".", decSep);
+            posY = txtPosY.Text.Replace(",", decSep);
+            posY = txtPosY.Text.Replace(".", decSep);
+            gMapEditHouseLocation.Position= new PointLatLng(Convert.ToDouble(posY), Convert.ToDouble(posX));
+            GMapOverlay markersOverlay = new GMapOverlay("My House");
+            GMarkerGoogle marker = new GMarkerGoogle(gMapEditHouseLocation.Position, GMap.NET.WindowsForms.Markers.GMarkerGoogleType.yellow_pushpin);
+            markersOverlay.Markers.Clear();
+            markersOverlay.Markers.Add(marker);
+            gMapEditHouseLocation.Overlays.Clear();
+            gMapEditHouseLocation.Overlays.Add(markersOverlay);
+            //refresh the map (zoom in and zoom out)
+            double z = gMapEditHouseLocation.Zoom;
+            gMapEditHouseLocation.Zoom = z + 0.5;
+            gMapEditHouseLocation.Zoom = z;
+            gMapEditHouseLocation.Update();
+            gMapEditHouseLocation.Refresh();
+
+        }
+
+        private void clearFields()
+        {
+            txtAddress.Text = "";
+            txtDesHouse.Text = "";
+            txtPanelAngle.Text = "";
+            txtPosX.Text = "";
+            txtPosY.Text = "";
+            txtRotAngle.Text = "";
         }
 
         private void FrmHouses_FormClosing(object sender, FormClosingEventArgs e)
         {
+            //unload the maps and cancel cache
             GmapHousePosition.Manager.CancelTileCaching();
             GmapHousePosition.Dispose();
+            gMapEditHouseLocation.Manager.CancelTileCaching();
+            gMapEditHouseLocation.Dispose();
         }
 
         private void GmapHousePosition_OnMapClick(PointLatLng pointClick, MouseEventArgs e)
