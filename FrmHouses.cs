@@ -271,5 +271,170 @@ insert into houses(desHouse,xPos, yPos, panelAngle, houseAngle, houseAdress) val
             txtNewRotAngle.Text = "";
             Notification.success(this, "Success", "New house saved");
         }
+
+        private void gMapEditHouseLocation_OnMapClick(PointLatLng pointClick, MouseEventArgs e)
+        {
+            //get tje lang and the lat
+            txtPosX.Text = pointClick.Lng.ToString();
+            txtPosY.Text = pointClick.Lat.ToString();
+
+            //set the marker
+            var markOverlay = new GMapOverlay("MY House");
+            GMarkerGoogle mark = new GMarkerGoogle(pointClick, GMarkerGoogleType.yellow_pushpin);
+            markOverlay.Markers.Clear();
+            markOverlay.Markers.Add(mark);
+            gMapEditHouseLocation.Overlays.Clear();
+            gMapEditHouseLocation.Overlays.Add(markOverlay);
+            //refresh the map (zoom in and zoom out)
+            double z = gMapEditHouseLocation.Zoom;
+            gMapEditHouseLocation.Zoom = z + 0.5;
+            gMapEditHouseLocation.Zoom = z;
+            //get the address if possible
+            GeoCoderStatusCode status;
+            Placemark? address = GMapProviders.GoogleMap.GetPlacemark(pointClick, out status);
+            if (status == GeoCoderStatusCode.OK && address.HasValue)
+            {
+                txtAddress.Text = address.Value.Address;
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //if the selection is empty
+            if (bsHouses.Current == null)
+            {
+                Notification.warn(this, "Empty selection", "Please select a house in the list");
+                cmbHouse.DroppedDown = true;
+                return;
+            }
+            //validate values
+            //validate the form
+            bool ok = true;
+            errProv2.Clear();
+            if (txtDesHouse.Text.Replace(" ", "") == "")
+            {
+                ok = false;
+                errProv2.SetError(txtDesHouse, "Required!");
+            }
+
+            if ((txtPosX.Text.Replace(" ", "") == "") || (txtPosX.Text == "0"))
+            {
+                ok = false;
+                errProv2.SetError(txtPosX, "Required!");
+            }
+
+            if (txtPosY.Text.Replace(" ", "") == "" || txtPosY.Text == "0")
+            {
+                ok = false;
+                errProv2.SetError(txtPosY, "Required!");
+            }
+
+            if (txtRotAngle.Text.Replace(" ", "") == "" || txtRotAngle.Text == "0")
+            {
+                ok = false;
+                errProv2.SetError(txtRotAngle, "Required!");
+            }
+
+            if (txtPanelAngle.Text.Replace(" ", "") == "" || txtPanelAngle.Text == "0")
+            {
+                ok = false;
+                errProv2.SetError(txtPanelAngle, "Required!");
+            }
+
+            if (!ok)
+                return;
+
+            //now check for double
+            string selectedHouseId = null;
+            selectedHouseId = ((DataRowView)bsHouses.Current)["houseId"].ToString();
+            SQLiteCommand cmdCount = new SQLiteCommand();
+            cmdCount.Connection = myProcs.cn;
+            cmdCount.CommandText = @"select count(houseid) from houses where 
+upper(replace(deshouse, ' ',''))=@paramDesHouse and houseId <> @paramHouseId";
+            cmdCount.Parameters.Clear();
+            cmdCount.Parameters.AddWithValue("@paramDesHouse", txtDesHouse.Text.Replace(" ", "").ToUpper());
+            cmdCount.Parameters.AddWithValue("@paramHouseId", selectedHouseId);
+            int count = 0;
+            try
+            {
+                count = Convert.ToInt32(cmdCount.ExecuteScalar());
+            }
+            catch (Exception ex)
+            {
+                Notification.error(this, "Database error", "Impossible to check double in house table" +
+                    "\n" + ex.Message);
+                cmdCount.Dispose();
+                this.Close();
+            }
+
+            if (count > 0)
+            {
+                cmdCount.Dispose();
+                Notification.error(this, "Double house", "a house already exist with that name");
+                txtDesHouse.Focus();
+                txtDesHouse.SelectAll();
+                return;
+            }
+            cmdCount.Dispose();
+
+            //now update the selected house
+            SQLiteCommand cmd = new SQLiteCommand();
+            cmd.Connection = myProcs.cn;
+            cmd.CommandText = @"
+update houses set desHouse = @paramDesHouse,
+xPos = @paramXPose,
+yPos = @paramYPose,
+panelAngle = @paramPanelAngle,
+houseAngle = @paramHouseAngle,
+houseAdress = @paramHouseAdress
+where houseId= @paramHouseId
+";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@paramDesHouse", txtDesHouse.Text.Trim());
+            cmd.Parameters.AddWithValue("@paramXPose", txtPosX.Text);
+            cmd.Parameters.AddWithValue("@paramYPose", txtPosY.Text);
+            cmd.Parameters.AddWithValue("@paramPanelAngle", txtPanelAngle.Text);
+            cmd.Parameters.AddWithValue("@paramHouseAngle", txtRotAngle.Text);
+            cmd.Parameters.AddWithValue("@paramHouseAdress", txtAddress.Text.Trim());
+            cmd.Parameters.AddWithValue("@paramHouseId", selectedHouseId);
+            try
+            {
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            catch (Exception ex)
+            {
+                Notification.error(this, "Database error", "Impossible to update the selected house" +
+                    "\n" + ex.Message);
+                cmd.Dispose();
+                this.Close();
+            }
+
+            //show location in the mapEdit
+            //get the decimal separator to convert decimal to double
+            var decSep = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator;
+            string posY = null, posX = null;
+            posX = txtPosX.Text.Replace(",", decSep);
+            posX = txtPosX.Text.Replace(".", decSep);
+            posY = txtPosY.Text.Replace(",", decSep);
+            posY = txtPosY.Text.Replace(".", decSep);
+            gMapEditHouseLocation.Position = new PointLatLng(Convert.ToDouble(posY), Convert.ToDouble(posX));
+            GMapOverlay markersOverlay = new GMapOverlay("My House");
+            GMarkerGoogle marker = new GMarkerGoogle(gMapEditHouseLocation.Position, GMap.NET.WindowsForms.Markers.GMarkerGoogleType.yellow_pushpin);
+            markersOverlay.Markers.Clear();
+            markersOverlay.Markers.Add(marker);
+            gMapEditHouseLocation.Overlays.Clear();
+            gMapEditHouseLocation.Overlays.Add(markersOverlay);
+            //refresh the map (zoom in and zoom out)
+            double z = gMapEditHouseLocation.Zoom;
+            gMapEditHouseLocation.Zoom = z + 0.5;
+            gMapEditHouseLocation.Zoom = z;
+            gMapEditHouseLocation.Update();
+            gMapEditHouseLocation.Refresh();
+            //show success notification
+            Notification.success(this, "Success", "Changes saved");
+
+        }
+        
     }
 }

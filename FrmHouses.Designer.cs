@@ -72,6 +72,9 @@
             this.tag4 = new AntdUI.Tag();
             this.btnSave = new AntdUI.Button();
             this.bsHouses = new System.Windows.Forms.BindingSource(this.components);
+            this.btnDelHouse = new AntdUI.Button();
+            this.tooltipComponent1 = new AntdUI.TooltipComponent();
+            this.errProv2 = new System.Windows.Forms.ErrorProvider(this.components);
             this.TabMainHouse.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -79,6 +82,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errProv)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsHouses)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProv2)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -106,6 +110,7 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.Color.White;
+            this.tabPage1.Controls.Add(this.btnDelHouse);
             this.tabPage1.Controls.Add(this.btnSave);
             this.tabPage1.Controls.Add(this.panel2);
             this.tabPage1.Controls.Add(this.label13);
@@ -481,7 +486,7 @@
             this.cmbHouse.FormattingEnabled = true;
             this.cmbHouse.Location = new System.Drawing.Point(185, 95);
             this.cmbHouse.Name = "cmbHouse";
-            this.cmbHouse.Size = new System.Drawing.Size(594, 31);
+            this.cmbHouse.Size = new System.Drawing.Size(464, 31);
             this.cmbHouse.TabIndex = 25;
             // 
             // label13
@@ -532,6 +537,7 @@
             this.gMapEditHouseLocation.Size = new System.Drawing.Size(370, 252);
             this.gMapEditHouseLocation.TabIndex = 18;
             this.gMapEditHouseLocation.Zoom = 0D;
+            this.gMapEditHouseLocation.OnMapClick += new GMap.NET.WindowsForms.MapClick(this.gMapEditHouseLocation_OnMapClick);
             // 
             // tag4
             // 
@@ -556,6 +562,24 @@
             this.btnSave.TabIndex = 28;
             this.btnSave.Text = "Save Changes";
             this.btnSave.Type = AntdUI.TTypeMini.Primary;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnDelHouse
+            // 
+            this.btnDelHouse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDelHouse.Image = ((System.Drawing.Image)(resources.GetObject("btnDelHouse.Image")));
+            this.btnDelHouse.Location = new System.Drawing.Point(689, 89);
+            this.btnDelHouse.Name = "btnDelHouse";
+            this.btnDelHouse.Size = new System.Drawing.Size(124, 42);
+            this.btnDelHouse.TabIndex = 29;
+            this.btnDelHouse.Text = "Remove!";
+            this.tooltipComponent1.SetTip(this.btnDelHouse, "Remove the selected house!!!");
+            this.btnDelHouse.Type = AntdUI.TTypeMini.Error;
+            // 
+            // errProv2
+            // 
+            this.errProv2.ContainerControl = this;
+            this.errProv2.Icon = ((System.Drawing.Icon)(resources.GetObject("errProv2.Icon")));
             // 
             // FrmHouses
             // 
@@ -580,6 +604,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errProv)).EndInit();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bsHouses)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProv2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -627,5 +652,8 @@
         private AntdUI.Tag tag4;
         private AntdUI.Button btnSave;
         private System.Windows.Forms.BindingSource bsHouses;
+        private AntdUI.Button btnDelHouse;
+        private AntdUI.TooltipComponent tooltipComponent1;
+        private System.Windows.Forms.ErrorProvider errProv2;
     }
 }
