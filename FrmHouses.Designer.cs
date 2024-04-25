@@ -99,7 +99,7 @@
             this.TabMainHouse.Controls.Add(this.tabPage2);
             this.TabMainHouse.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TabMainHouse.ImageList = this.imageList1;
-            this.TabMainHouse.ItemSize = new System.Drawing.Size(200, 45);
+            this.TabMainHouse.ItemSize = new System.Drawing.Size(200, 36);
             this.TabMainHouse.Location = new System.Drawing.Point(0, 0);
             this.TabMainHouse.Name = "TabMainHouse";
             this.TabMainHouse.SelectedIndex = 0;
@@ -132,7 +132,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 4);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(821, 536);
+            this.tabPage1.Size = new System.Drawing.Size(821, 545);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "My Houses";
             // 
@@ -153,7 +153,7 @@
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
-            this.btnSave.Location = new System.Drawing.Point(622, 488);
+            this.btnSave.Location = new System.Drawing.Point(622, 497);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(193, 42);
             this.btnSave.TabIndex = 28;
@@ -170,7 +170,7 @@
             this.panel2.Controls.Add(this.tag4);
             this.panel2.Location = new System.Drawing.Point(443, 190);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(370, 293);
+            this.panel2.Size = new System.Drawing.Size(370, 302);
             this.panel2.TabIndex = 27;
             // 
             // gMapEditHouseLocation
@@ -196,7 +196,7 @@
             this.gMapEditHouseLocation.ScaleMode = GMap.NET.WindowsForms.ScaleModes.Integer;
             this.gMapEditHouseLocation.SelectedAreaFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(65)))), ((int)(((byte)(105)))), ((int)(((byte)(225)))));
             this.gMapEditHouseLocation.ShowTileGridLines = false;
-            this.gMapEditHouseLocation.Size = new System.Drawing.Size(370, 252);
+            this.gMapEditHouseLocation.Size = new System.Drawing.Size(370, 261);
             this.gMapEditHouseLocation.TabIndex = 18;
             this.gMapEditHouseLocation.Zoom = 0D;
             this.gMapEditHouseLocation.OnMapClick += new GMap.NET.WindowsForms.MapClick(this.gMapEditHouseLocation_OnMapClick);
@@ -240,7 +240,7 @@
             // 
             this.txtAddress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtAddress.Location = new System.Drawing.Point(185, 489);
+            this.txtAddress.Location = new System.Drawing.Point(185, 498);
             this.txtAddress.Name = "txtAddress";
             this.txtAddress.Size = new System.Drawing.Size(431, 41);
             this.txtAddress.TabIndex = 24;
@@ -248,7 +248,7 @@
             // txtPanelAngle
             // 
             this.txtPanelAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtPanelAngle.Location = new System.Drawing.Point(185, 375);
+            this.txtPanelAngle.Location = new System.Drawing.Point(185, 384);
             this.txtPanelAngle.Name = "txtPanelAngle";
             this.txtPanelAngle.Size = new System.Drawing.Size(231, 41);
             this.txtPanelAngle.TabIndex = 23;
@@ -257,7 +257,7 @@
             // txtRotAngle
             // 
             this.txtRotAngle.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtRotAngle.Location = new System.Drawing.Point(185, 317);
+            this.txtRotAngle.Location = new System.Drawing.Point(185, 326);
             this.txtRotAngle.Name = "txtRotAngle";
             this.txtRotAngle.Size = new System.Drawing.Size(231, 41);
             this.txtRotAngle.TabIndex = 22;
@@ -266,7 +266,7 @@
             // txtPosY
             // 
             this.txtPosY.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtPosY.Location = new System.Drawing.Point(185, 259);
+            this.txtPosY.Location = new System.Drawing.Point(185, 268);
             this.txtPosY.Name = "txtPosY";
             this.txtPosY.Size = new System.Drawing.Size(231, 41);
             this.txtPosY.TabIndex = 21;
@@ -275,7 +275,7 @@
             // txtPosX
             // 
             this.txtPosX.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtPosX.Location = new System.Drawing.Point(185, 201);
+            this.txtPosX.Location = new System.Drawing.Point(185, 210);
             this.txtPosX.Name = "txtPosX";
             this.txtPosX.Size = new System.Drawing.Size(231, 41);
             this.txtPosX.TabIndex = 20;
@@ -294,7 +294,7 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label7.AutoSizeMode = AntdUI.TAutoSize.Auto;
-            this.label7.Location = new System.Drawing.Point(10, 494);
+            this.label7.Location = new System.Drawing.Point(10, 503);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(68, 25);
             this.label7.TabIndex = 18;
@@ -304,7 +304,7 @@
             // 
             this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label8.AutoSizeMode = AntdUI.TAutoSize.Auto;
-            this.label8.Location = new System.Drawing.Point(8, 381);
+            this.label8.Location = new System.Drawing.Point(8, 390);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(121, 25);
             this.label8.TabIndex = 17;
@@ -314,7 +314,7 @@
             // 
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSizeMode = AntdUI.TAutoSize.Auto;
-            this.label9.Location = new System.Drawing.Point(15, 324);
+            this.label9.Location = new System.Drawing.Point(15, 333);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(145, 25);
             this.label9.TabIndex = 16;
@@ -324,7 +324,7 @@
             // 
             this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label10.AutoSizeMode = AntdUI.TAutoSize.Auto;
-            this.label10.Location = new System.Drawing.Point(10, 267);
+            this.label10.Location = new System.Drawing.Point(10, 276);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(150, 25);
             this.label10.TabIndex = 15;
@@ -334,7 +334,7 @@
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label11.AutoSizeMode = AntdUI.TAutoSize.Auto;
-            this.label11.Location = new System.Drawing.Point(10, 210);
+            this.label11.Location = new System.Drawing.Point(10, 219);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(150, 25);
             this.label11.TabIndex = 14;
@@ -382,7 +382,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(821, 536);
+            this.tabPage2.Size = new System.Drawing.Size(822, 545);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Add New House";
             // 
@@ -570,7 +570,7 @@
             this.tag1.Location = new System.Drawing.Point(3, 3);
             this.tag1.Name = "tag1";
             this.tag1.Padding = new System.Windows.Forms.Padding(20);
-            this.tag1.Size = new System.Drawing.Size(815, 92);
+            this.tag1.Size = new System.Drawing.Size(816, 92);
             this.tag1.TabIndex = 0;
             this.tag1.Text = "Please enter your new house informations (* required)\r\n";
             this.tag1.Type = AntdUI.TTypeMini.Info;

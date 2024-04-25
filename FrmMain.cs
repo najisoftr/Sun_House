@@ -30,6 +30,14 @@ namespace Sun_House
             {
                 FrmHouses f2 = new FrmHouses();
                 myProcs.openWindow(PanelMain, f2);
+                return;
+            }
+
+            if (item.IconSvg == "1")
+            {
+                FrmEquip f2 = new FrmEquip();
+                myProcs.openWindow(PanelMain, f2);
+                return;
             }
         }
     }
