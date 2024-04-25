@@ -10,6 +10,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -261,6 +262,8 @@ insert into houses(desHouse,xPos, yPos, panelAngle, houseAngle, houseAdress) val
                 cmd.Dispose();
                 this.Close();
             }
+            //update the combo of houses
+            updateComboDs();
             //clear values and show success notification
             GmapHousePosition.Overlays.Clear();
             txtNewAddress.Text = "";
@@ -270,6 +273,29 @@ insert into houses(desHouse,xPos, yPos, panelAngle, houseAngle, houseAdress) val
             txtNewPosY.Text = "";
             txtNewRotAngle.Text = "";
             Notification.success(this, "Success", "New house saved");
+        }
+
+        private void updateComboDs()
+        {
+            if (bsHouses.Count > 0)
+            {
+                string oldSelection = ((DataRowView)bsHouses.Current)["houseId"].ToString();
+                cmbHouse.DataSource = null;
+                bsHouses.DataSource = DsHouses();
+                cmbHouse.DataSource = bsHouses;
+                cmbHouse.DisplayMember = "desHouse";
+                cmbHouse.ValueMember = "houseId";
+                bsHouses.Position = bsHouses.Find("houseId", oldSelection);
+            }
+            else
+            {
+                cmbHouse.DataSource = null;
+                bsHouses.DataSource = DsHouses();
+                cmbHouse.DataSource = bsHouses;
+                cmbHouse.DisplayMember = "desHouse";
+                cmbHouse.ValueMember = "houseId";
+            }
+            
         }
 
         private void gMapEditHouseLocation_OnMapClick(PointLatLng pointClick, MouseEventArgs e)
@@ -409,32 +435,70 @@ where houseId= @paramHouseId
                 cmd.Dispose();
                 this.Close();
             }
-
-            //show location in the mapEdit
-            //get the decimal separator to convert decimal to double
-            var decSep = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator;
-            string posY = null, posX = null;
-            posX = txtPosX.Text.Replace(",", decSep);
-            posX = txtPosX.Text.Replace(".", decSep);
-            posY = txtPosY.Text.Replace(",", decSep);
-            posY = txtPosY.Text.Replace(".", decSep);
-            gMapEditHouseLocation.Position = new PointLatLng(Convert.ToDouble(posY), Convert.ToDouble(posX));
-            GMapOverlay markersOverlay = new GMapOverlay("My House");
-            GMarkerGoogle marker = new GMarkerGoogle(gMapEditHouseLocation.Position, GMap.NET.WindowsForms.Markers.GMarkerGoogleType.yellow_pushpin);
-            markersOverlay.Markers.Clear();
-            markersOverlay.Markers.Add(marker);
-            gMapEditHouseLocation.Overlays.Clear();
-            gMapEditHouseLocation.Overlays.Add(markersOverlay);
-            //refresh the map (zoom in and zoom out)
-            double z = gMapEditHouseLocation.Zoom;
-            gMapEditHouseLocation.Zoom = z + 0.5;
-            gMapEditHouseLocation.Zoom = z;
-            gMapEditHouseLocation.Update();
-            gMapEditHouseLocation.Refresh();
+            //update the combo
+            updateComboDs();
+            ////show location in the mapEdit
+            ////get the decimal separator to convert decimal to double
+            //var decSep = System.Globalization.CultureInfo.CurrentCulture.NumberFormat.CurrencyDecimalSeparator;
+            //string posY = null, posX = null;
+            //posX = txtPosX.Text.Replace(",", decSep);
+            //posX = txtPosX.Text.Replace(".", decSep);
+            //posY = txtPosY.Text.Replace(",", decSep);
+            //posY = txtPosY.Text.Replace(".", decSep);
+            //gMapEditHouseLocation.Position = new PointLatLng(Convert.ToDouble(posY), Convert.ToDouble(posX));
+            //GMapOverlay markersOverlay = new GMapOverlay("My House");
+            //GMarkerGoogle marker = new GMarkerGoogle(gMapEditHouseLocation.Position, GMap.NET.WindowsForms.Markers.GMarkerGoogleType.yellow_pushpin);
+            //markersOverlay.Markers.Clear();
+            //markersOverlay.Markers.Add(marker);
+            //gMapEditHouseLocation.Overlays.Clear();
+            //gMapEditHouseLocation.Overlays.Add(markersOverlay);
+            ////refresh the map (zoom in and zoom out)
+            //double z = gMapEditHouseLocation.Zoom;
+            //gMapEditHouseLocation.Zoom = z + 0.5;
+            //gMapEditHouseLocation.Zoom = z;
+            //gMapEditHouseLocation.Update();
+            //gMapEditHouseLocation.Refresh();
             //show success notification
             Notification.success(this, "Success", "Changes saved");
 
         }
-        
+
+        private void btnDelHouse_Click(object sender, EventArgs e)
+        {
+            //check for empty selection
+            if (bsHouses.Current == null)
+                return;
+            //get the desHouse of the current house
+            string currentHouse = ((DataRowView)bsHouses.Current)["desHouse"].ToString();
+            if (MessageBox.Show("Do you really Want to remove # " + currentHouse + " ?\nWarning: All data of that " +
+                "house will be deleted", "Confirmation required", MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning) == DialogResult.Cancel)
+                return;
+
+            if (MessageBox.Show("Really Really ???\nTHIS IS AN IRRIVERSIBLE OPERATION", "Confirmation OF CONFIRMATION", MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning) == DialogResult.Cancel)
+                return;
+
+            //get the current houseId
+            string idCurrentHouse = ((DataRowView)bsHouses.Current)["houseId"].ToString();
+            //delete the current house
+            SQLiteCommand cmd = new SQLiteCommand();
+            cmd.Connection = myProcs.cn;
+            cmd.CommandText = "delete from houses where houseId=@paramHouseId";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@paramHouseId", idCurrentHouse);
+            try
+            {
+                cmd.ExecuteNonQuery();
+                cmd.Dispose();
+            }
+            catch(Exception ex)
+            {
+                cmd.Dispose();
+                Notification.error(this, "DataBase Error", "can't delete the house\n" + ex.Message);
+                this.Close();
+            }
+            updateComboDs();
+        }
     }
 }

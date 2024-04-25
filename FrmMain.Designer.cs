@@ -28,34 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            AntdUI.MenuItem menuItem5 = new AntdUI.MenuItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
-            AntdUI.MenuItem menuItem6 = new AntdUI.MenuItem();
-            this.MenuLeft = new AntdUI.Menu();
+            AntdUI.MenuItem menuItem1 = new AntdUI.MenuItem();
+            AntdUI.MenuItem menuItem2 = new AntdUI.MenuItem();
             this.MenuHorizontal = new AntdUI.Segmented();
             this.PanelMain = new System.Windows.Forms.Panel();
             this.tag1 = new AntdUI.Tag();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.MenuLeft = new AntdUI.Menu();
             this.PanelMain.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // MenuLeft
-            // 
-            this.MenuLeft.BackColor = System.Drawing.Color.Gold;
-            this.MenuLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            menuItem5.Icon = ((System.Drawing.Image)(resources.GetObject("menuItem5.Icon")));
-            menuItem5.IconSvg = "0";
-            menuItem5.Text = "My Houses";
-            menuItem6.IconSvg = "1";
-            menuItem6.Text = "second item";
-            this.MenuLeft.Items.AddRange(new AntdUI.MenuItem[] {
-            menuItem5,
-            menuItem6});
-            this.MenuLeft.Location = new System.Drawing.Point(0, 90);
-            this.MenuLeft.Name = "MenuLeft";
-            this.MenuLeft.Size = new System.Drawing.Size(225, 658);
-            this.MenuLeft.TabIndex = 0;
-            this.MenuLeft.Text = "menu1";
-            this.MenuLeft.SelectChanged += new AntdUI.Menu.SelectEventHandler(this.MenuLeft_SelectChanged);
             // 
             // MenuHorizontal
             // 
@@ -74,9 +57,9 @@
             this.PanelMain.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.PanelMain.Controls.Add(this.tag1);
             this.PanelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelMain.Location = new System.Drawing.Point(225, 90);
+            this.PanelMain.Location = new System.Drawing.Point(220, 90);
             this.PanelMain.Name = "PanelMain";
-            this.PanelMain.Size = new System.Drawing.Size(857, 658);
+            this.PanelMain.Size = new System.Drawing.Size(862, 658);
             this.PanelMain.TabIndex = 2;
             // 
             // tag1
@@ -88,10 +71,40 @@
             this.tag1.Margin = new System.Windows.Forms.Padding(10);
             this.tag1.Name = "tag1";
             this.tag1.Padding = new System.Windows.Forms.Padding(10, 10, 10, 0);
-            this.tag1.Size = new System.Drawing.Size(856, 52);
+            this.tag1.Size = new System.Drawing.Size(861, 52);
             this.tag1.TabIndex = 0;
             this.tag1.Text = "Key Solutions Sun House";
             this.tag1.Type = AntdUI.TTypeMini.Primary;
+            // 
+            // panel1
+            // 
+            this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.MenuLeft);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 90);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(220, 658);
+            this.panel1.TabIndex = 1;
+            // 
+            // MenuLeft
+            // 
+            this.MenuLeft.BackColor = System.Drawing.Color.Gold;
+            this.MenuLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            menuItem1.Icon = ((System.Drawing.Image)(resources.GetObject("menuItem1.Icon")));
+            menuItem1.IconSvg = "0";
+            menuItem1.Text = "My Houses";
+            menuItem2.Icon = ((System.Drawing.Image)(resources.GetObject("menuItem2.Icon")));
+            menuItem2.IconSvg = "1";
+            menuItem2.Text = "My Equipements";
+            this.MenuLeft.Items.AddRange(new AntdUI.MenuItem[] {
+            menuItem1,
+            menuItem2});
+            this.MenuLeft.Location = new System.Drawing.Point(0, 0);
+            this.MenuLeft.Name = "MenuLeft";
+            this.MenuLeft.Size = new System.Drawing.Size(303, 641);
+            this.MenuLeft.TabIndex = 1;
+            this.MenuLeft.Text = "menu1";
+            this.MenuLeft.SelectChanged += new AntdUI.Menu.SelectEventHandler(this.MenuLeft_SelectChanged);
             // 
             // FrmMain
             // 
@@ -100,7 +113,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1082, 748);
             this.Controls.Add(this.PanelMain);
-            this.Controls.Add(this.MenuLeft);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.MenuHorizontal);
             this.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -109,15 +122,16 @@
             this.Text = "Key Solutions Sun House";
             this.Load += new System.EventHandler(this.FrmMain_Load);
             this.PanelMain.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private AntdUI.Menu MenuLeft;
         private AntdUI.Segmented MenuHorizontal;
         private System.Windows.Forms.Panel PanelMain;
         private AntdUI.Tag tag1;
+        private System.Windows.Forms.Panel panel1;
+        private AntdUI.Menu MenuLeft;
     }
 }
