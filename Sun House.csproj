@@ -84,6 +84,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmEquip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEquip.Designer.cs">
+      <DependentUpon>FrmEquip.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmHouses.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     <Compile Include="myProcs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmEquip.resx">
+      <DependentUpon>FrmEquip.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmHouses.resx">
       <DependentUpon>FrmHouses.cs</DependentUpon>
     </EmbeddedResource>

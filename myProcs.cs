@@ -37,7 +37,7 @@ namespace Sun_House
                 return false;
             }
 
-            //create house table
+            //create house + machines table
             using(SQLiteTransaction trans = cn.BeginTransaction())
             {
                 SQLiteCommand cmd = new SQLiteCommand();
@@ -51,7 +51,18 @@ CREATE TABLE IF NOT EXISTS houses (
     panelAngle INTEGER,
     houseAngle INTEGER,
     houseAdress TEXT
-);";
+);
+CREATE TABLE IF NOT EXISTS machines (
+    machineId      INTEGER PRIMARY KEY AUTOINCREMENT,
+    houseId        INTEGER REFERENCES houses (houseId) ON DELETE CASCADE,
+    desMachine     TEXT    UNIQUE,
+    electrCapacity REAL    NOT NULL,
+    countMachine   REAL    NOT NULL,
+    maxWat         REAL    NOT NULL,
+    dailyHoursWork  REAL,
+    iconMachine    BLOB
+);
+;";
                 try
                 {
                     cmd.ExecuteNonQuery();
