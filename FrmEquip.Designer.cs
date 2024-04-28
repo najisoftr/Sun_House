@@ -408,18 +408,17 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtNewDesEquip);
             this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Location = new System.Drawing.Point(8, 107);
+            this.groupBox2.Location = new System.Drawing.Point(8, 68);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(842, 495);
+            this.groupBox2.Size = new System.Drawing.Size(842, 534);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Equipement informations";
             // 
             // btnAddNew
             // 
-            this.btnAddNew.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnAddNew.Image = ((System.Drawing.Image)(resources.GetObject("btnAddNew.Image")));
-            this.btnAddNew.Location = new System.Drawing.Point(309, 370);
+            this.btnAddNew.Location = new System.Drawing.Point(309, 351);
             this.btnAddNew.Name = "btnAddNew";
             this.btnAddNew.Size = new System.Drawing.Size(269, 42);
             this.btnAddNew.TabIndex = 14;
@@ -507,7 +506,7 @@
             this.tag1.Location = new System.Drawing.Point(3, 3);
             this.tag1.Name = "tag1";
             this.tag1.Padding = new System.Windows.Forms.Padding(10);
-            this.tag1.Size = new System.Drawing.Size(852, 76);
+            this.tag1.Size = new System.Drawing.Size(852, 59);
             this.tag1.TabIndex = 1;
             this.tag1.Text = "Please enter the new equipement data (*) required";
             this.tag1.Type = AntdUI.TTypeMini.Primary;
