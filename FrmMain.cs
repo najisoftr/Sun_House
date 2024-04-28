@@ -45,5 +45,21 @@ namespace Sun_House
         {
             myProcs.cn.Close();
         }
+
+        private void btnCollapsVPanel_Click(object sender, EventArgs e)
+        {
+            if(MenuLeft.Collapsed==false)
+            {
+                MenuLeft.Collapsed = true;
+                panelV.Width = MenuLeft.Width;
+                btnCollapsVPanel.Left = 3;
+            }
+            else
+            {
+                MenuLeft.Collapsed = false;
+                panelV.Width = MenuLeft.Width;
+                btnCollapsVPanel.Left = panelV.Width - btnCollapsVPanel.Width;
+            }
+        }
+        }
     }
-}
