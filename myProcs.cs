@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Data.SQLite;
 using AntdUI;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Sun_House
 {
@@ -54,10 +55,8 @@ CREATE TABLE IF NOT EXISTS houses (
 );
 CREATE TABLE IF NOT EXISTS machines (
     machineId      INTEGER PRIMARY KEY AUTOINCREMENT,
-    houseId        INTEGER REFERENCES houses (houseId) ON DELETE CASCADE,
     desMachine     TEXT    UNIQUE,
     electrCapacity REAL    NOT NULL,
-    countMachine   REAL    NOT NULL,
     maxWat         REAL    NOT NULL,
     dailyHoursWork  REAL,
     iconMachine    BLOB
@@ -107,6 +106,15 @@ CREATE TABLE IF NOT EXISTS machines (
                 
                 
             }
+        }
+
+        //replace the decimal separator
+        public static string ReplaceDecimalSep(string value)
+        {
+            string decSep = Thread.CurrentThread.CurrentCulture.NumberFormat.NumberDecimalSeparator;
+            string correctValue= value.Replace(",", decSep);
+            correctValue = value.Replace(".", decSep);
+            return correctValue;
         }
 
     }

@@ -40,5 +40,10 @@ namespace Sun_House
                 return;
             }
         }
+
+        private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            myProcs.cn.Close();
+        }
     }
 }
