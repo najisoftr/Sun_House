@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEquip));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -57,14 +58,30 @@
             this.electrCapacity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.maxWat = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dailyHoursWork = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnCancelFind = new AntdUI.Icon.IconError();
+            this.tooltipComponent1 = new AntdUI.TooltipComponent();
+            this.txtDesEquip = new AntdUI.Input();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtWattPeak = new AntdUI.InputNumber();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtCapacity = new AntdUI.InputNumber();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtDailyUse = new AntdUI.InputNumber();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnSave = new AntdUI.Button();
+            this.errProv2 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnDel = new AntdUI.Button();
+            this.lblBadge = new AntdUI.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errProv1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEquip)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEquip)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProv2)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -145,6 +162,11 @@
             // txtNewDailyUse
             // 
             this.txtNewDailyUse.Location = new System.Drawing.Point(309, 258);
+            this.txtNewDailyUse.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
             this.txtNewDailyUse.Name = "txtNewDailyUse";
             this.txtNewDailyUse.Size = new System.Drawing.Size(169, 40);
             this.txtNewDailyUse.TabIndex = 8;
@@ -242,8 +264,8 @@
             this.tag2.Padding = new System.Windows.Forms.Padding(10);
             this.tag2.Size = new System.Drawing.Size(852, 76);
             this.tag2.TabIndex = 2;
-            this.tag2.Text = "Please enter the new equipement data (*) required";
-            this.tag2.Type = AntdUI.TTypeMini.Primary;
+            this.tag2.Text = "My equipements";
+            this.tag2.Type = AntdUI.TTypeMini.Warn;
             // 
             // groupBox1
             // 
@@ -251,11 +273,13 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.BackColor = System.Drawing.Color.White;
+            this.groupBox1.Controls.Add(this.btnCancelFind);
             this.groupBox1.Controls.Add(this.grdEquip);
             this.groupBox1.Controls.Add(this.txtFindEquip);
+            this.groupBox1.Controls.Add(this.lblBadge);
             this.groupBox1.Location = new System.Drawing.Point(20, 89);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(822, 243);
+            this.groupBox1.Size = new System.Drawing.Size(822, 264);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "My Equipements";
@@ -265,6 +289,16 @@
             this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.BackColor = System.Drawing.Color.White;
+            this.groupBox3.Controls.Add(this.btnDel);
+            this.groupBox3.Controls.Add(this.btnSave);
+            this.groupBox3.Controls.Add(this.txtDailyUse);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.txtWattPeak);
+            this.groupBox3.Controls.Add(this.label6);
+            this.groupBox3.Controls.Add(this.txtCapacity);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.txtDesEquip);
+            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Location = new System.Drawing.Point(20, 359);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(822, 243);
@@ -275,12 +309,17 @@
             // txtFindEquip
             // 
             this.txtFindEquip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFindEquip.Back = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(235)))), ((int)(((byte)(171)))));
+            this.txtFindEquip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(235)))), ((int)(((byte)(171)))));
+            this.txtFindEquip.Badge = "";
             this.txtFindEquip.Image = ((System.Drawing.Image)(resources.GetObject("txtFindEquip.Image")));
-            this.txtFindEquip.Location = new System.Drawing.Point(643, 18);
+            this.txtFindEquip.Location = new System.Drawing.Point(604, 38);
             this.txtFindEquip.Name = "txtFindEquip";
             this.txtFindEquip.PlaceholderText = "find by name";
             this.txtFindEquip.Size = new System.Drawing.Size(173, 35);
+            this.txtFindEquip.Status = AntdUI.TType.Error;
             this.txtFindEquip.TabIndex = 0;
+            this.txtFindEquip.TextChanged += new System.EventHandler(this.txtFindEquip_TextChanged);
             // 
             // grdEquip
             // 
@@ -290,21 +329,35 @@
             this.grdEquip.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grdEquip.ColumnHeadersHeight = 45;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Gold;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdEquip.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.grdEquip.ColumnHeadersHeight = 42;
             this.grdEquip.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.machineId,
             this.desMachine,
             this.electrCapacity,
             this.maxWat,
             this.dailyHoursWork});
-            this.grdEquip.Location = new System.Drawing.Point(6, 52);
+            this.grdEquip.EnableHeadersVisualStyles = false;
+            this.grdEquip.Location = new System.Drawing.Point(6, 76);
             this.grdEquip.MultiSelect = false;
             this.grdEquip.Name = "grdEquip";
             this.grdEquip.ReadOnly = true;
             this.grdEquip.RowHeadersVisible = false;
-            this.grdEquip.RowTemplate.Height = 42;
-            this.grdEquip.Size = new System.Drawing.Size(810, 185);
+            this.grdEquip.RowTemplate.Height = 35;
+            this.grdEquip.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.grdEquip.Size = new System.Drawing.Size(810, 182);
             this.grdEquip.TabIndex = 1;
+            // 
+            // bsEquip
+            // 
+            this.bsEquip.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bsEquip_ListChanged);
             // 
             // machineId
             // 
@@ -317,12 +370,11 @@
             // 
             // desMachine
             // 
-            this.desMachine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.desMachine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.desMachine.DataPropertyName = "desMachine";
             this.desMachine.HeaderText = "Name";
             this.desMachine.Name = "desMachine";
             this.desMachine.ReadOnly = true;
-            this.desMachine.Width = 81;
             // 
             // electrCapacity
             // 
@@ -351,6 +403,135 @@
             this.dailyHoursWork.ReadOnly = true;
             this.dailyHoursWork.Width = 194;
             // 
+            // btnCancelFind
+            // 
+            this.btnCancelFind.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCancelFind.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancelFind.Location = new System.Drawing.Point(781, 41);
+            this.btnCancelFind.Name = "btnCancelFind";
+            this.btnCancelFind.Size = new System.Drawing.Size(31, 29);
+            this.btnCancelFind.TabIndex = 2;
+            this.btnCancelFind.Text = "Cancel Filter";
+            this.tooltipComponent1.SetTip(this.btnCancelFind, "Cancel Filter");
+            this.btnCancelFind.Click += new System.EventHandler(this.btnCancelFind_Click);
+            // 
+            // txtDesEquip
+            // 
+            this.txtDesEquip.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDesEquip.Location = new System.Drawing.Point(250, 29);
+            this.txtDesEquip.Name = "txtDesEquip";
+            this.txtDesEquip.Size = new System.Drawing.Size(527, 40);
+            this.txtDesEquip.TabIndex = 4;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(33, 38);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(162, 23);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Equipement name *";
+            // 
+            // txtWattPeak
+            // 
+            this.txtWattPeak.Location = new System.Drawing.Point(250, 129);
+            this.txtWattPeak.Name = "txtWattPeak";
+            this.txtWattPeak.Size = new System.Drawing.Size(169, 40);
+            this.txtWattPeak.TabIndex = 10;
+            this.txtWattPeak.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(33, 138);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(93, 23);
+            this.label6.TabIndex = 9;
+            this.label6.Text = "Watt-Peak ";
+            // 
+            // txtCapacity
+            // 
+            this.txtCapacity.Location = new System.Drawing.Point(250, 79);
+            this.txtCapacity.Name = "txtCapacity";
+            this.txtCapacity.Size = new System.Drawing.Size(169, 40);
+            this.txtCapacity.TabIndex = 8;
+            this.txtCapacity.Text = "0";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(33, 88);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(210, 23);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Electrical Capacity (Watt) *";
+            // 
+            // txtDailyUse
+            // 
+            this.txtDailyUse.Location = new System.Drawing.Point(250, 179);
+            this.txtDailyUse.Maximum = new decimal(new int[] {
+            24,
+            0,
+            0,
+            0});
+            this.txtDailyUse.Name = "txtDailyUse";
+            this.txtDailyUse.Size = new System.Drawing.Size(169, 40);
+            this.txtDailyUse.TabIndex = 12;
+            this.txtDailyUse.Text = "0";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(33, 188);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(195, 23);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "Daily Uses (Hours/Day) *";
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSave.Image = ((System.Drawing.Image)(resources.GetObject("btnSave.Image")));
+            this.btnSave.Location = new System.Drawing.Point(584, 178);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(193, 42);
+            this.btnSave.TabIndex = 29;
+            this.btnSave.Text = "Save Changes";
+            this.btnSave.Type = AntdUI.TTypeMini.Primary;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // errProv2
+            // 
+            this.errProv2.ContainerControl = this;
+            // 
+            // btnDel
+            // 
+            this.btnDel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDel.Image = ((System.Drawing.Image)(resources.GetObject("btnDel.Image")));
+            this.btnDel.Location = new System.Drawing.Point(584, 79);
+            this.btnDel.Name = "btnDel";
+            this.btnDel.Size = new System.Drawing.Size(193, 42);
+            this.btnDel.TabIndex = 30;
+            this.btnDel.Text = "Remove";
+            this.tooltipComponent1.SetTip(this.btnDel, "Remove selected Equipement");
+            this.btnDel.Type = AntdUI.TTypeMini.Error;
+            this.btnDel.Click += new System.EventHandler(this.btnDel_Click);
+            // 
+            // lblBadge
+            // 
+            this.lblBadge.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBadge.BackColor = System.Drawing.Color.Transparent;
+            this.lblBadge.Badge = "";
+            this.lblBadge.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBadge.Fore = System.Drawing.Color.Gray;
+            this.lblBadge.ForeColor = System.Drawing.Color.Gray;
+            this.lblBadge.Location = new System.Drawing.Point(690, 16);
+            this.lblBadge.Name = "lblBadge";
+            this.lblBadge.Size = new System.Drawing.Size(87, 23);
+            this.lblBadge.TabIndex = 3;
+            this.lblBadge.Text = "";
+            // 
             // FrmEquip
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
@@ -364,6 +545,7 @@
             this.Name = "FrmEquip";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "My Electrical Equipements";
+            this.Load += new System.EventHandler(this.FrmEquip_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -371,8 +553,11 @@
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errProv1)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdEquip)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsEquip)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errProv2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -400,11 +585,25 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private AntdUI.Input txtFindEquip;
         private System.Windows.Forms.DataGridView grdEquip;
+        private System.Windows.Forms.BindingSource bsEquip;
         private System.Windows.Forms.DataGridViewTextBoxColumn machineId;
         private System.Windows.Forms.DataGridViewTextBoxColumn desMachine;
         private System.Windows.Forms.DataGridViewTextBoxColumn electrCapacity;
         private System.Windows.Forms.DataGridViewTextBoxColumn maxWat;
         private System.Windows.Forms.DataGridViewTextBoxColumn dailyHoursWork;
-        private System.Windows.Forms.BindingSource bsEquip;
+        private AntdUI.Icon.IconError btnCancelFind;
+        private AntdUI.TooltipComponent tooltipComponent1;
+        private AntdUI.InputNumber txtDailyUse;
+        private System.Windows.Forms.Label label8;
+        private AntdUI.InputNumber txtWattPeak;
+        private System.Windows.Forms.Label label6;
+        private AntdUI.InputNumber txtCapacity;
+        private System.Windows.Forms.Label label7;
+        private AntdUI.Input txtDesEquip;
+        private System.Windows.Forms.Label label1;
+        private AntdUI.Button btnSave;
+        private System.Windows.Forms.ErrorProvider errProv2;
+        private AntdUI.Button btnDel;
+        private AntdUI.Label lblBadge;
     }
 }
