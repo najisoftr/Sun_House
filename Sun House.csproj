@@ -51,6 +51,9 @@
     <Reference Include="GMap.NET.WindowsForms, Version=2.1.7.0, Culture=neutral, PublicKeyToken=b85b9027b614afef, processorArchitecture=MSIL">
       <HintPath>packages\GMap.NET.WinForms.2.1.7\lib\net48\GMap.NET.WindowsForms.dll</HintPath>
     </Reference>
+    <Reference Include="Krypton.Toolkit">
+      <HintPath>..\KSPM v2\packages\Krypton.Toolkit.80.23.11.321\lib\net48\Krypton.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -84,6 +87,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmCalcul.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCalcul.Designer.cs">
+      <DependentUpon>FrmCalcul.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEquip.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,6 +114,9 @@
     <Compile Include="myProcs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmCalcul.resx">
+      <DependentUpon>FrmCalcul.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEquip.resx">
       <DependentUpon>FrmEquip.cs</DependentUpon>
     </EmbeddedResource>

@@ -39,6 +39,13 @@ namespace Sun_House
                 myProcs.openWindow(PanelMain, f2);
                 return;
             }
+
+            if (item.IconSvg == "2")
+            {
+                FrmCalcul f2 = new FrmCalcul();
+                myProcs.openWindow(PanelMain, f2);
+                return;
+            }
         }
 
         private void FrmMain_FormClosing(object sender, FormClosingEventArgs e)
