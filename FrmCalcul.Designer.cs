@@ -38,13 +38,14 @@
             this.bsEquipement = new System.Windows.Forms.BindingSource(this.components);
             this.tooltipComponent1 = new AntdUI.TooltipComponent();
             this.btnSend = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnInfo = new System.Windows.Forms.Button();
             this.panel2 = new AntdUI.Panel();
             this.lstCalculEquipements = new Krypton.Toolkit.KryptonListBox();
             this.tag2 = new AntdUI.Tag();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnBack = new System.Windows.Forms.Button();
             this.bsCalculEquip = new System.Windows.Forms.BindingSource(this.components);
-            this.btnClear = new System.Windows.Forms.Button();
             this.label1 = new AntdUI.Label();
             this.txtDailyConsum = new AntdUI.Input();
             this.txtDailyConsumAndWast = new AntdUI.Input();
@@ -145,16 +146,59 @@
             // 
             // btnSend
             // 
+            this.btnSend.Cursor = System.Windows.Forms.Cursors.PanEast;
             this.btnSend.FlatAppearance.BorderSize = 0;
             this.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSend.Image = ((System.Drawing.Image)(resources.GetObject("btnSend.Image")));
-            this.btnSend.Location = new System.Drawing.Point(281, 162);
+            this.btnSend.Location = new System.Drawing.Point(281, 232);
             this.btnSend.Name = "btnSend";
             this.btnSend.Size = new System.Drawing.Size(33, 33);
             this.btnSend.TabIndex = 8;
             this.tooltipComponent1.SetTip(this.btnSend, "Add Equipement ");
             this.btnSend.UseVisualStyleBackColor = true;
             this.btnSend.Click += new System.EventHandler(this.btnSend_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Cursor = System.Windows.Forms.Cursors.PanWest;
+            this.btnBack.FlatAppearance.BorderSize = 0;
+            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
+            this.btnBack.Location = new System.Drawing.Point(281, 337);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(33, 33);
+            this.btnBack.TabIndex = 9;
+            this.tooltipComponent1.SetTip(this.btnBack, "Remove Equipement from equipements to calcuate list");
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Cursor = System.Windows.Forms.Cursors.No;
+            this.btnClear.FlatAppearance.BorderSize = 0;
+            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
+            this.btnClear.Location = new System.Drawing.Point(281, 402);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(33, 33);
+            this.btnClear.TabIndex = 10;
+            this.tooltipComponent1.SetTip(this.btnClear, "Clear all equipements to calculate");
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnInfo
+            // 
+            this.btnInfo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnInfo.FlatAppearance.BorderSize = 0;
+            this.btnInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInfo.Image = ((System.Drawing.Image)(resources.GetObject("btnInfo.Image")));
+            this.btnInfo.Location = new System.Drawing.Point(281, 111);
+            this.btnInfo.Name = "btnInfo";
+            this.btnInfo.Size = new System.Drawing.Size(33, 33);
+            this.btnInfo.TabIndex = 21;
+            this.tooltipComponent1.SetTip(this.btnInfo, "Show selected equipement details");
+            this.btnInfo.UseVisualStyleBackColor = true;
+            this.btnInfo.Click += new System.EventHandler(this.btnInfo_Click);
             // 
             // panel2
             // 
@@ -220,32 +264,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 7;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnBack
-            // 
-            this.btnBack.FlatAppearance.BorderSize = 0;
-            this.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBack.Image = ((System.Drawing.Image)(resources.GetObject("btnBack.Image")));
-            this.btnBack.Location = new System.Drawing.Point(281, 337);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(33, 33);
-            this.btnBack.TabIndex = 9;
-            this.tooltipComponent1.SetTip(this.btnBack, "Remove Equipement from equipements to calcuate list");
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // btnClear
-            // 
-            this.btnClear.FlatAppearance.BorderSize = 0;
-            this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClear.Image = ((System.Drawing.Image)(resources.GetObject("btnClear.Image")));
-            this.btnClear.Location = new System.Drawing.Point(281, 402);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(33, 33);
-            this.btnClear.TabIndex = 10;
-            this.tooltipComponent1.SetTip(this.btnClear, "Clear all equipements to calculate");
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
             // label1
             // 
@@ -368,6 +386,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(801, 619);
+            this.Controls.Add(this.btnInfo);
             this.Controls.Add(this.txtDailyAmpereHour);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtTotalPeakWatt);
@@ -426,5 +445,6 @@
         private AntdUI.Label label4;
         private AntdUI.Input txtDailyAmpereHour;
         private AntdUI.Label label5;
+        private System.Windows.Forms.Button btnInfo;
     }
 }

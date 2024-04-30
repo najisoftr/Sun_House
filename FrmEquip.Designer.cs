@@ -343,7 +343,7 @@
             // txtFindEquip
             // 
             this.txtFindEquip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtFindEquip.Back = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(235)))), ((int)(((byte)(171)))));
+            this.txtFindEquip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(235)))), ((int)(((byte)(171)))));
             this.txtFindEquip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(235)))), ((int)(((byte)(171)))));
             this.txtFindEquip.Badge = "";
             this.txtFindEquip.Image = ((System.Drawing.Image)(resources.GetObject("txtFindEquip.Image")));
@@ -361,7 +361,7 @@
             this.lblBadge.BackColor = System.Drawing.Color.Transparent;
             this.lblBadge.Badge = "";
             this.lblBadge.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBadge.Fore = System.Drawing.Color.Gray;
+            this.lblBadge.ForeColor = System.Drawing.Color.Gray;
             this.lblBadge.ForeColor = System.Drawing.Color.Gray;
             this.lblBadge.Location = new System.Drawing.Point(690, 16);
             this.lblBadge.Name = "lblBadge";

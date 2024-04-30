@@ -8,6 +8,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -62,6 +63,7 @@ namespace Sun_House
             //update the list of calculated equipements
             updateListCalculateEquip();
         }
+
 
         private void txtFindEquip_TextChanged(object sender, EventArgs e)
         {
@@ -208,6 +210,44 @@ namespace Sun_House
         private void lstCalculEquipements_DoubleClick(object sender, EventArgs e)
         {
             btnBack.PerformClick();
+        }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            //if the selection is empty do nothing
+            if (bsEquipement.Current == null)
+                return;
+            //get the current equipement id
+            string currentId = ((DataRowView)bsEquipement.Current)["machineId"].ToString();
+            SQLiteCommand cmd = new SQLiteCommand();
+            cmd.Connection = myProcs.cn;
+            cmd.CommandText = "select * from machines where machineId=@paramMachineId";
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@paramMachineId", currentId);
+            SQLiteDataReader rd = null;
+            try
+            {
+                rd = cmd.ExecuteReader();
+                cmd.Dispose();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Impossible to display equipement details\n" + ex.Message,
+                    "DataBase Error");
+                cmd.Dispose();
+                this.Close();
+            }
+            while(rd.Read())
+            {
+                KryptonMessageBox.Show(
+                    "Equipement name: " + rd["desMachine"].ToString() + "\n" +
+                    "Capacity: " + rd["electrCapacity"].ToString() + " Watt/H\n" +
+                    "Peak-Watt: " + rd["maxWat"].ToString() + " Watt\n" +
+                    "Daily uses time: " + rd["dailyHoursWork"].ToString() + " H\n",
+                    "Equipement Details", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Information
+                    );
+            }
+            rd.Close();
         }
     }
 }
