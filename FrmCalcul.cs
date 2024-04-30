@@ -94,7 +94,7 @@ namespace Sun_House
                 return;
             }
             //now input the number of machine
-            string machineCount = KryptonInputBox.Show("How many?", "Equipement Count");
+            string machineCount = KryptonInputBox.Show("How many?", "Equipement Count","1");
             if (machineCount.Replace(" ", "") == "")
             {
                 Notification.warn(this, "Empty Value", "no action!");
