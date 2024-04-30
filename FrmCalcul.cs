@@ -146,6 +146,34 @@ namespace Sun_House
             lstCalculEquipements.DataSource = bsCalculEquip;
             lstCalculEquipements.DisplayMember = "displayText";
             lstCalculEquipements.ValueMember = "machineId";
+            //calcul different prop
+            double dailyConsumption=0, dailyConsumptionWithWast=0, totalCapacity=0, totalPeakWatt=0,
+                dailyAmperePerHour=0;
+            dailyConsumption = Math.Ceiling((from m in Machines
+                                select m.dailyConsumation).Sum());
+            dailyConsumptionWithWast = Math.Ceiling(dailyConsumption * myProcs.wast);
+            totalCapacity= Math.Ceiling((from m in Machines
+                            select m.totalMachineCapacity).Sum());
+            totalPeakWatt = Math.Ceiling((from m in Machines
+                             select m.totalPeakWatt).Sum());
+            double voltoya = myProcs.Voltiya(totalCapacity);
+            if(voltoya==0)
+            {
+                KryptonMessageBox.Show("Total Capacity out of range to calculate the voltage of the system",
+                    "Capacity out of range", KryptonMessageBoxButtons.OK, KryptonMessageBoxIcon.Exclamation);
+                txtDailyAmpereHour.Text = "error!!!";
+            }
+            else
+            {
+                dailyAmperePerHour = Math.Ceiling(dailyConsumptionWithWast / voltoya);
+            }
+            //display values
+            txtDailyConsum.Text = dailyConsumption.ToString();
+            txtDailyConsumAndWast.Text= dailyConsumptionWithWast.ToString();
+            txtTotalCapacity.Text = totalCapacity.ToString();
+            txtTotalPeakWatt.Text = totalPeakWatt.ToString();
+            if(voltoya!=0)
+                txtDailyAmpereHour.Text=dailyAmperePerHour.ToString();
         }
 
         private void btnClear_Click(object sender, EventArgs e)

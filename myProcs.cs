@@ -17,6 +17,24 @@ namespace Sun_House
         //global database
         public static SQLiteConnection cn = new SQLiteConnection();
         public static string dbName = "sunHouseDb.sqlite";
+
+        //eneregy wast
+        public static double wast = 1.3;//30%
+
+        //get voltiya of the installation
+        public static double Voltiya(double capacity)
+        {
+            if (capacity < 1200)
+                return 12;
+
+            if (capacity >=1200 && capacity<2400)
+                return 24;
+
+            if (capacity >= 2400 && capacity<4800)
+                return 48;
+            return 0;
+        }
+        //db creation and check
         public static bool CheckDb()
         {
             //the returned value

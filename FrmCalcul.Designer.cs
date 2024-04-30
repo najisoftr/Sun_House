@@ -47,10 +47,14 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.label1 = new AntdUI.Label();
             this.txtDailyConsum = new AntdUI.Input();
-            this.txtTotalCapacity = new AntdUI.Input();
+            this.txtDailyConsumAndWast = new AntdUI.Input();
             this.label2 = new AntdUI.Label();
-            this.txtTotalPeakWatt = new AntdUI.Input();
+            this.txtTotalCapacity = new AntdUI.Input();
             this.label3 = new AntdUI.Label();
+            this.txtTotalPeakWatt = new AntdUI.Input();
+            this.label4 = new AntdUI.Label();
+            this.txtDailyAmpereHour = new AntdUI.Input();
+            this.label5 = new AntdUI.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsEquipement)).BeginInit();
             this.panel2.SuspendLayout();
@@ -100,7 +104,7 @@
             this.panel1.ShadowOffsetY = 3;
             this.panel1.ShadowOpacity = 0.3F;
             this.panel1.ShadowOpacityHover = 0.8F;
-            this.panel1.Size = new System.Drawing.Size(269, 507);
+            this.panel1.Size = new System.Drawing.Size(269, 595);
             this.panel1.TabIndex = 5;
             // 
             // lstEquip
@@ -113,7 +117,7 @@
             this.lstEquip.ItemStyle = Krypton.Toolkit.ButtonStyle.NavigatorOverflow;
             this.lstEquip.Location = new System.Drawing.Point(6, 84);
             this.lstEquip.Name = "lstEquip";
-            this.lstEquip.Size = new System.Drawing.Size(254, 414);
+            this.lstEquip.Size = new System.Drawing.Size(254, 502);
             this.lstEquip.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -168,7 +172,7 @@
             this.panel2.ShadowOffsetY = 3;
             this.panel2.ShadowOpacity = 0.3F;
             this.panel2.ShadowOpacityHover = 0.8F;
-            this.panel2.Size = new System.Drawing.Size(285, 507);
+            this.panel2.Size = new System.Drawing.Size(285, 595);
             this.panel2.TabIndex = 6;
             // 
             // lstCalculEquipements
@@ -181,7 +185,7 @@
             this.lstCalculEquipements.ItemStyle = Krypton.Toolkit.ButtonStyle.NavigatorOverflow;
             this.lstCalculEquipements.Location = new System.Drawing.Point(6, 84);
             this.lstCalculEquipements.Name = "lstCalculEquipements";
-            this.lstCalculEquipements.Size = new System.Drawing.Size(270, 414);
+            this.lstCalculEquipements.Size = new System.Drawing.Size(270, 502);
             this.lstCalculEquipements.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
@@ -248,7 +252,7 @@
             this.label1.Location = new System.Drawing.Point(605, 24);
             this.label1.Name = "label1";
             this.label1.Shadow = 3;
-            this.label1.Size = new System.Drawing.Size(158, 23);
+            this.label1.Size = new System.Drawing.Size(184, 23);
             this.label1.Suffix = "";
             this.label1.TabIndex = 11;
             this.label1.Text = "Daily consumption:";
@@ -260,60 +264,117 @@
             this.txtDailyConsum.Location = new System.Drawing.Point(605, 53);
             this.txtDailyConsum.Name = "txtDailyConsum";
             this.txtDailyConsum.ReadOnly = true;
-            this.txtDailyConsum.Size = new System.Drawing.Size(178, 37);
+            this.txtDailyConsum.Size = new System.Drawing.Size(184, 37);
             this.txtDailyConsum.SuffixText = "Wh/day";
             this.txtDailyConsum.TabIndex = 12;
+            // 
+            // txtDailyConsumAndWast
+            // 
+            this.txtDailyConsumAndWast.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDailyConsumAndWast.Location = new System.Drawing.Point(605, 165);
+            this.txtDailyConsumAndWast.Name = "txtDailyConsumAndWast";
+            this.txtDailyConsumAndWast.ReadOnly = true;
+            this.txtDailyConsumAndWast.Size = new System.Drawing.Size(184, 37);
+            this.txtDailyConsumAndWast.SuffixText = "W";
+            this.txtDailyConsumAndWast.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(605, 111);
+            this.label2.Name = "label2";
+            this.label2.Shadow = 3;
+            this.label2.Size = new System.Drawing.Size(184, 48);
+            this.label2.Suffix = "";
+            this.label2.TabIndex = 13;
+            this.label2.Text = "Daily Consumption\r\nwith wast";
             // 
             // txtTotalCapacity
             // 
             this.txtTotalCapacity.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalCapacity.Location = new System.Drawing.Point(605, 150);
+            this.txtTotalCapacity.Location = new System.Drawing.Point(605, 258);
             this.txtTotalCapacity.Name = "txtTotalCapacity";
             this.txtTotalCapacity.ReadOnly = true;
-            this.txtTotalCapacity.Size = new System.Drawing.Size(178, 37);
+            this.txtTotalCapacity.Size = new System.Drawing.Size(184, 37);
             this.txtTotalCapacity.SuffixText = "W";
-            this.txtTotalCapacity.TabIndex = 14;
+            this.txtTotalCapacity.TabIndex = 16;
             // 
-            // label2
+            // label3
             // 
-            this.label2.Location = new System.Drawing.Point(605, 121);
-            this.label2.Name = "label2";
-            this.label2.Shadow = 3;
-            this.label2.Size = new System.Drawing.Size(158, 23);
-            this.label2.Suffix = "";
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Total Capacity:";
+            this.label3.Location = new System.Drawing.Point(605, 229);
+            this.label3.Name = "label3";
+            this.label3.Shadow = 3;
+            this.label3.Size = new System.Drawing.Size(184, 23);
+            this.label3.Suffix = "";
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Total Equip Capacity:";
             // 
             // txtTotalPeakWatt
             // 
             this.txtTotalPeakWatt.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTotalPeakWatt.Location = new System.Drawing.Point(605, 245);
+            this.txtTotalPeakWatt.Location = new System.Drawing.Point(605, 355);
             this.txtTotalPeakWatt.Name = "txtTotalPeakWatt";
             this.txtTotalPeakWatt.ReadOnly = true;
-            this.txtTotalPeakWatt.Size = new System.Drawing.Size(178, 37);
+            this.txtTotalPeakWatt.Size = new System.Drawing.Size(184, 37);
             this.txtTotalPeakWatt.SuffixText = "W";
-            this.txtTotalPeakWatt.TabIndex = 16;
+            this.txtTotalPeakWatt.TabIndex = 18;
             // 
-            // label3
+            // label4
             // 
-            this.label3.Location = new System.Drawing.Point(605, 216);
-            this.label3.Name = "label3";
-            this.label3.Shadow = 3;
-            this.label3.Size = new System.Drawing.Size(158, 23);
-            this.label3.Suffix = "";
-            this.label3.TabIndex = 15;
-            this.label3.Text = "Total Peak-Watt:";
+            this.label4.Location = new System.Drawing.Point(605, 326);
+            this.label4.Name = "label4";
+            this.label4.Shadow = 3;
+            this.label4.Size = new System.Drawing.Size(184, 23);
+            this.label4.Suffix = "";
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Total Peak-Watt:";
+            // 
+            // txtDailyAmpereHour
+            // 
+            this.txtDailyAmpereHour.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDailyAmpereHour.Back = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(173)))), ((int)(((byte)(151)))));
+            this.txtDailyAmpereHour.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(77)))), ((int)(((byte)(173)))), ((int)(((byte)(151)))));
+            this.txtDailyAmpereHour.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDailyAmpereHour.Fore = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtDailyAmpereHour.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtDailyAmpereHour.Location = new System.Drawing.Point(605, 441);
+            this.txtDailyAmpereHour.Name = "txtDailyAmpereHour";
+            this.txtDailyAmpereHour.ReadOnly = true;
+            this.txtDailyAmpereHour.Size = new System.Drawing.Size(184, 37);
+            this.txtDailyAmpereHour.SuffixText = "Ah/Day";
+            this.txtDailyAmpereHour.TabIndex = 20;
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Fore = System.Drawing.Color.Green;
+            this.label5.ForeColor = System.Drawing.Color.Green;
+            this.label5.Location = new System.Drawing.Point(605, 412);
+            this.label5.Name = "label5";
+            this.label5.Shadow = 5;
+            this.label5.ShadowColor = System.Drawing.Color.Red;
+            this.label5.ShadowOffsetX = 5;
+            this.label5.ShadowOpacity = 0.5F;
+            this.label5.Size = new System.Drawing.Size(184, 23);
+            this.label5.Suffix = "";
+            this.label5.TabIndex = 19;
+            this.label5.Text = "Daily Ampere/Hour:";
             // 
             // FrmCalcul
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 531);
+            this.ClientSize = new System.Drawing.Size(801, 619);
+            this.Controls.Add(this.txtDailyAmpereHour);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.txtTotalPeakWatt);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTotalCapacity);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtDailyConsumAndWast);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtDailyConsum);
             this.Controls.Add(this.label1);
@@ -357,9 +418,13 @@
         private System.Windows.Forms.Button btnClear;
         private AntdUI.Label label1;
         private AntdUI.Input txtDailyConsum;
-        private AntdUI.Input txtTotalCapacity;
+        private AntdUI.Input txtDailyConsumAndWast;
         private AntdUI.Label label2;
-        private AntdUI.Input txtTotalPeakWatt;
+        private AntdUI.Input txtTotalCapacity;
         private AntdUI.Label label3;
+        private AntdUI.Input txtTotalPeakWatt;
+        private AntdUI.Label label4;
+        private AntdUI.Input txtDailyAmpereHour;
+        private AntdUI.Label label5;
     }
 }
